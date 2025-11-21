@@ -53,6 +53,9 @@ const MainLayout: React.FC<{ profile: Profile; projects: Project[]; experiences:
 );
 
 const AppContent: React.FC = () => {
+  useEffect(() => {
+  window.scrollTo(0, 0);
+}, []);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [experiences, setExperiences] = useState<Experience[]>([]);
