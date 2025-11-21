@@ -19,8 +19,16 @@ export const Contact: React.FC = () => {
 
     setTimeout(() => {
       const subject = `Portfolio Contact from ${formState.name}`;
-      const body = `Name: ${formState.name}%0D%0AEmail: ${formState.email}%0D%0A%0D%0AMessage:%0D%0A${formState.message}`;
-      window.location.href = `mailto:${destinationEmail}?subject=${encodeURIComponent(subject)}&body=${body}`;
+      const body = [
+        'You have a new contact from your portfolio:',
+        '',
+        `Name: ${formState.name}`,
+        `Email: ${formState.email}`,
+        '',
+        'Message:',
+        `${formState.message}`
+      ].join('\n');
+      window.location.href = `mailto:${destinationEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       setStatus('success');
       setFormState({ name: '', email: '', message: '' });
       setTimeout(() => setStatus('idle'), 5000);
